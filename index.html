@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090909">
+<title>OBRY | My Music</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 16px;
+    background: #090909;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    margin: 28px 0;
+}
+
+.logo {
+    width: 58px;
+    height: 58px;
+    fill: #1DB954;
+}
+
+h1 {
+    margin: 10px 0;
+    font-size: 34px;
+    letter-spacing: 4px;
+}
+
+header p {
+    color: #ccc;
+    font-size: 14px;
+}
+
+main {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 18px;
+    background: #151515;
+    border: 1px solid #292929;
+    border-radius: 18px;
+}
+
+h2 {
+    font-size: 21px;
+    margin: 4px 0 12px;
+}
+
+.slide-hint {
+    color: #1DB954;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+/* PLAYLIST GESER KIRI-KANAN */
+.playlist-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 14px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 14px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #1DB954 #292929;
+}
+
+.playlist {
+    flex: 0 0 88%;
+    min-width: 0;
+    scroll-snap-align: start;
+}
+
+.playlist iframe {
+    display: block;
+    width: 100%;
+    height: 352px;
+    border: none;
+    border-radius: 12px;
+    background: #121212;
+}
+
+.playlist-container::-webkit-scrollbar {
+    height: 5px;
+}
+
+.playlist-container::-webkit-scrollbar-thumb {
+    background: #1DB954;
+    border-radius: 10px;
+}
+
+footer {
+    text-align: center;
+    color: #888;
+    font-size: 12px;
+    margin: 28px 0 12px;
+}
+
+@media (min-width: 700px) {
+    .playlist {
+        flex-basis: calc(50% - 7px);
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+
+    header {
+        margin: 22px 0;
+    }
+
+    h1 {
+        font-size: 29px;
+    }
+
+    main {
+        padding: 14px;
+    }
+
+    .playlist {
+        flex: 0 0 88%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <svg class="logo" viewBox="0 0 24 24" aria-label="Spotify">
+        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.503 17.308a.75.75 0 0 1-1.032.248c-2.826-1.727-6.385-2.117-10.578-1.16a.75.75 0 1 1-.334-1.462c4.586-1.048 8.52-.598 11.696 1.342.352.215.463.676.248 1.032zm1.472-3.275a.937.937 0 0 1-1.289.309c-3.235-1.989-8.168-2.565-11.994-1.403a.938.938 0 1 1-.545-1.795c4.372-1.326 9.802-.684 13.519 1.6.442.272.58.848.309 1.289zm.126-3.41C15.22 8.33 8.79 8.117 5.068 9.247a1.125 1.125 0 1 1-.654-2.153c4.273-1.297 11.38-1.047 15.875 1.622a1.125 1.125 0 0 1-1.188 1.907z"/>
+    </svg>
+
+    <h1>OBRY</h1>
+    <p>My Music • My Playlist • My Vibes</p>
+</header>
+
+<main>
+    <h2>🎧 My Playlist</h2>
+
+    <p class="slide-hint">
+        ← GESER KE KIRI UNTUK PLAYLIST LAINNYA →
+    </p>
+
+    <div class="playlist-container">
+
+        <div class="playlist">
+            <iframe
+                src="https://open.spotify.com/embed/playlist/0HCgtcdgiD1j8Zrgsml4rX"
+                title="Playlist 1"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+        </div>
+
+        <div class="playlist">
+            <iframe
+                src="https://open.spotify.com/embed/playlist/3ek65NRqWq1WYjGUvCUUi7"
+                title="Playlist 2"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+        </div>
+
+        <div class="playlist">
+            <iframe
+                src="https://open.spotify.com/embed/playlist/37i9dQZF1DX186v583rmzp"
+                title="Playlist 3"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+            </iframe>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    © 2026 OBRY • All rights reserved.
+</footer>
+
+</body>
+  </html>
