@@ -1,203 +1,296 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#090909">
-<title>OBRY | My Music</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b09">
+  <title>BryG — My Little World</title>
 
-<style>
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-    padding: 16px;
-    background-color: #090909;
-    background-image:
-        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.75)),
-        url("./1ef5fb379e681b2a065facc80421dafa.jpg?v=3");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    color: white;
-    font-family: Arial, sans-serif;
-}
-
-header {
-    text-align: center;
-    margin: 28px 0;
-}
-
-.logo {
-    width: 58px;
-    height: 58px;
-    fill: #1DB954;
-}
-
-h1 {
-    margin: 10px 0;
-    font-size: 36px;
-    letter-spacing: 5px;
-}
-
-header p {
-    color: #eee;
-    font-size: 14px;
-}
-
-main {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 18px;
-    background: rgba(15,15,15,0.88);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 18px;
-    backdrop-filter: blur(8px);
-}
-
-h2 {
-    font-size: 21px;
-    margin: 4px 0 12px;
-}
-
-.slide-hint {
-    color: #1DB954;
-    font-size: 13px;
-    margin-bottom: 16px;
-}
-
-.playlist-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 14px;
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 14px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
-    scrollbar-width: thin;
-    scrollbar-color: #1DB954 #292929;
-}
-
-.playlist {
-    flex: 0 0 88%;
-    min-width: 0;
-    scroll-snap-align: start;
-}
-
-.playlist iframe {
-    display: block;
-    width: 100%;
-    height: 352px;
-    border: none;
-    border-radius: 12px;
-    background: #121212;
-}
-
-.playlist-container::-webkit-scrollbar {
-    height: 6px;
-}
-
-.playlist-container::-webkit-scrollbar-thumb {
-    background: #1DB954;
-    border-radius: 10px;
-}
-
-footer {
-    text-align: center;
-    color: #ddd;
-    font-size: 12px;
-    margin: 28px 0 12px;
-}
-
-@media (min-width: 700px) {
-    .playlist {
-        flex-basis: calc(50% - 7px);
+  <style>
+    :root {
+      --green: #48ff91;
+      --bg: #080b09;
+      --card: rgba(15, 20, 17, .88);
     }
-}
 
-@media (max-width: 600px) {
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-        padding: 12px;
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg) url("./1ef5fb379e681b2a065facc80421dafa.jpg")
+        center/cover fixed no-repeat;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .76);
+      z-index: -1;
     }
 
     header {
-        margin: 22px 0;
+      text-align: center;
+      padding: 45px 15px 25px;
     }
 
-    h1 {
-        font-size: 30px;
+    header h1 {
+      color: var(--green);
+      font-size: clamp(42px, 10vw, 65px);
+      margin: 0;
+      letter-spacing: 5px;
+      text-shadow: 0 0 20px #48ff9144;
+    }
+
+    header p {
+      color: #c5c5c5;
+      letter-spacing: 2px;
     }
 
     main {
-        padding: 14px;
+      width: min(92%, 650px);
+      margin: auto;
     }
-}
-</style>
+
+    .section {
+      background: var(--card);
+      border: 1px solid #48ff9133;
+      border-radius: 18px;
+      padding: 20px;
+      margin: 20px 0;
+      backdrop-filter: blur(10px);
+    }
+
+    h2 {
+      font-size: 17px;
+      color: var(--green);
+      margin-top: 0;
+    }
+
+    iframe {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .photo {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #171b18;
+      aspect-ratio: 1;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .25s;
+    }
+
+    .photo:active img {
+      transform: scale(.96);
+    }
+
+    .reaction {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: #000b;
+      border-radius: 20px;
+      padding: 5px 9px;
+    }
+
+    .pop {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 55px;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .pop.animate {
+      animation: pop .7s ease-out;
+    }
+
+    @keyframes pop {
+      0% { opacity: 0; transform: scale(.3); }
+      35% { opacity: 1; transform: scale(1.3); }
+      100% { opacity: 0; transform: scale(1.8); }
+    }
+
+    #visitor-counter {
+      text-align: center;
+      padding: 22px 10px;
+      margin-top: 25px;
+      color: white;
+    }
+
+    #visit-count {
+      color: var(--green);
+      font-size: 29px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 12px 10px 35px;
+      color: #aaa;
+      line-height: 1.9;
+    }
+
+    footer strong {
+      color: var(--green);
+      letter-spacing: 3px;
+    }
+  </style>
 </head>
 
 <body>
+  <header>
+    <h1>BryG</h1>
+    <p>MY MUSIC · MY WORLD · MY STORY</p>
+  </header>
 
-<header>
-    <svg class="logo" viewBox="0 0 24 24" aria-label="Spotify">
-        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.503 17.308a.75.75 0 0 1-1.032.248c-2.826-1.727-6.385-2.117-10.578-1.16a.75.75 0 1 1-.334-1.462c4.586-1.048 8.52-.598 11.696 1.342.352.215.463.676.248 1.032zm1.472-3.275a.937.937 0 0 1-1.289.309c-3.235-1.989-8.168-2.565-11.994-1.403a.938.938 0 1 1-.545-1.795c4.372-1.326 9.802-.684 13.519 1.6.442.272.58.848.309 1.289zm.126-3.41C15.22 8.33 8.79 8.117 5.068 9.247a1.125 1.125 0 1 1-.654-2.153c4.273-1.297 11.38-1.047 15.875 1.622a1.125 1.125 0 0 1-1.188 1.907z"/>
-    </svg>
+  <main>
+    <section class="section">
+      <h2>🎧 MY PLAYLISTS</h2>
 
-    <h1>OBRY</h1>
-    <p>My Music • My Playlist • My Vibes</p>
-</header>
+      <iframe
+        src="https://open.spotify.com/embed/playlist/0HCgtcdgiD1j8Zrgsml4rX?utm_source=generator"
+        height="352"
+        loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+      </iframe>
 
-<main>
-    <h2>🎧 My Playlist</h2>
-    <p class="slide-hint">← GESER KE KIRI UNTUK PLAYLIST LAINNYA →</p>
+      <iframe
+        src="https://open.spotify.com/embed/playlist/3ek65NRqWq1WYjGUvCUUi7?utm_source=generator"
+        height="352"
+        loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+      </iframe>
 
-    <div class="playlist-container">
+      <iframe
+        src="https://open.spotify.com/embed/playlist/37i9dQZF1DX186v583rmzp?utm_source=generator"
+        height="352"
+        loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+      </iframe>
+    </section>
 
-        <div class="playlist">
-            <iframe
-                src="https://open.spotify.com/embed/playlist/0HCgtcdgiD1j8Zrgsml4rX"
-                title="OBRY Playlist 1"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy">
-            </iframe>
+    <section class="section">
+      <h2>📸 LITTLE MEMORIES</h2>
+
+      <div class="gallery">
+        <div class="photo" data-emoji="❤️">
+          <img src="./foto/1eb5354918d8ad241ae7be4305acec60.jpg"
+               alt="Memory 1" loading="lazy">
+          <span class="reaction">❤️</span>
+          <span class="pop">❤️</span>
         </div>
 
-        <div class="playlist">
-            <iframe
-                src="https://open.spotify.com/embed/playlist/3ek65NRqWq1WYjGUvCUUi7"
-                title="OBRY Playlist 2"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy">
-            </iframe>
+        <div class="photo" data-emoji="😂">
+          <img src="./foto/2f00ea44893b313d21fb5fdafb5b2b11.jpg"
+               alt="Memory 2" loading="lazy">
+          <span class="reaction">😂</span>
+          <span class="pop">😂</span>
         </div>
 
-        <div class="playlist">
-            <iframe
-                src="https://open.spotify.com/embed/playlist/37i9dQZF1DX186v583rmzp"
-                title="OBRY Playlist 3"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy">
-            </iframe>
+        <div class="photo" data-emoji="👍">
+          <img src="./foto/f35b7778f2cb296483c0bb33b9fb85c2.jpg"
+               alt="Memory 3" loading="lazy">
+          <span class="reaction">👍</span>
+          <span class="pop">👍</span>
         </div>
 
-    </div>
-</main>
+        <div class="photo" data-emoji="😱">
+          <img src="./foto/fc92879c124579a56dcab9059c5745f3.jpg"
+               alt="Memory 4" loading="lazy">
+          <span class="reaction">😱</span>
+          <span class="pop">😱</span>
+        </div>
+      </div>
+    </section>
 
-<footer>
-    © 2026 OBRY • All rights reserved.
-</footer>
+    <!-- PUBLIC VISITOR COUNT -->
+    <section id="visitor-counter" class="section">
+      <div style="font-size:13px;letter-spacing:2px;">
+        👁️ TOTAL VISITS
+      </div>
 
+      <div id="visit-count" style="margin:10px 0;">
+        Menghubungkan...
+      </div>
+
+      <div style="font-size:12px;color:#aaa;">
+        Thanks for visiting my little world.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>WKWKW 😂</div>
+    <strong>— BryG —</strong>
+  </footer>
+
+  <script>
+    // Emoji reaction animation
+    document.querySelectorAll(".photo").forEach(photo => {
+      photo.addEventListener("click", () => {
+        const pop = photo.querySelector(".pop");
+        pop.classList.remove("animate");
+        void pop.offsetWidth;
+        pop.classList.add("animate");
+      });
+    });
+  </script>
+
+  <!--
+    VISITOR COUNTER:
+    Penghitung belum aktif sampai GoatCounter dikonfigurasi.
+    Ganti YOUR-CODE dengan kode situs GoatCounter milikmu.
+  -->
+  <script>
+    const GOATCOUNTER_CODE = "YOUR-CODE";
+
+    if (GOATCOUNTER_CODE !== "YOUR-CODE") {
+      const script = document.createElement("script");
+      script.dataset.goatcounter =
+        "https://" + GOATCOUNTER_CODE + ".goatcounter.com/count";
+      script.async = true;
+      script.src = "//gc.zgo.at/count.js";
+
+      script.onload = () => {
+        document.getElementById("visit-count").textContent =
+          "Statistik terhubung";
+      };
+
+      script.onerror = () => {
+        document.getElementById("visit-count").textContent =
+          "Belum tersedia";
+      };
+
+      document.body.appendChild(script);
+    } else {
+      document.getElementById("visit-count").textContent =
+        "Aktifkan GoatCounter";
+    }
+  </script>
 </body>
 </html>
