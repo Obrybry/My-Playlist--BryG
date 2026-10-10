@@ -11,11 +11,22 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
     padding: 16px;
-    background: #090909;
+    background-color: #090909;
+    background-image:
+        linear-gradient(rgba(0,0,0,0.58), rgba(0,0,0,0.82)),
+        url("ffeee320059e981c86a986f349d20feb.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: white;
     font-family: Arial, sans-serif;
 }
@@ -33,12 +44,12 @@ header {
 
 h1 {
     margin: 10px 0;
-    font-size: 34px;
-    letter-spacing: 4px;
+    font-size: 36px;
+    letter-spacing: 5px;
 }
 
 header p {
-    color: #ccc;
+    color: #ddd;
     font-size: 14px;
 }
 
@@ -47,9 +58,10 @@ main {
     max-width: 900px;
     margin: 0 auto;
     padding: 18px;
-    background: #151515;
-    border: 1px solid #292929;
+    background: rgba(15,15,15,0.88);
+    border: 1px solid rgba(255,255,255,0.15);
     border-radius: 18px;
+    backdrop-filter: blur(8px);
 }
 
 h2 {
@@ -63,7 +75,6 @@ h2 {
     margin-bottom: 16px;
 }
 
-/* PLAYLIST GESER KIRI-KANAN */
 .playlist-container {
     display: flex;
     flex-direction: row;
@@ -74,8 +85,8 @@ h2 {
     overflow-y: hidden;
     padding-bottom: 14px;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
     scrollbar-width: thin;
     scrollbar-color: #1DB954 #292929;
 }
@@ -96,7 +107,7 @@ h2 {
 }
 
 .playlist-container::-webkit-scrollbar {
-    height: 5px;
+    height: 6px;
 }
 
 .playlist-container::-webkit-scrollbar-thumb {
@@ -106,7 +117,7 @@ h2 {
 
 footer {
     text-align: center;
-    color: #888;
+    color: #ddd;
     font-size: 12px;
     margin: 28px 0 12px;
 }
@@ -127,15 +138,11 @@ footer {
     }
 
     h1 {
-        font-size: 29px;
+        font-size: 30px;
     }
 
     main {
         padding: 14px;
-    }
-
-    .playlist {
-        flex: 0 0 88%;
     }
 }
 </style>
@@ -154,17 +161,14 @@ footer {
 
 <main>
     <h2>🎧 My Playlist</h2>
-
-    <p class="slide-hint">
-        ← GESER KE KIRI UNTUK PLAYLIST LAINNYA →
-    </p>
+    <p class="slide-hint">← GESER KE KIRI UNTUK PLAYLIST LAINNYA →</p>
 
     <div class="playlist-container">
 
         <div class="playlist">
             <iframe
                 src="https://open.spotify.com/embed/playlist/0HCgtcdgiD1j8Zrgsml4rX"
-                title="Playlist 1"
+                title="OBRY Playlist 1"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy">
             </iframe>
@@ -173,7 +177,7 @@ footer {
         <div class="playlist">
             <iframe
                 src="https://open.spotify.com/embed/playlist/3ek65NRqWq1WYjGUvCUUi7"
-                title="Playlist 2"
+                title="OBRY Playlist 2"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy">
             </iframe>
@@ -182,7 +186,7 @@ footer {
         <div class="playlist">
             <iframe
                 src="https://open.spotify.com/embed/playlist/37i9dQZF1DX186v583rmzp"
-                title="Playlist 3"
+                title="OBRY Playlist 3"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy">
             </iframe>
@@ -196,4 +200,4 @@ footer {
 </footer>
 
 </body>
-  </html>
+</html>
